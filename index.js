@@ -17,3 +17,11 @@ client.on('text', data => {
   bot.channels.cache.get('1018496267309031504').send(`[${data.source_name}]: ${data.message}`)
 })
 
+
+bot.on('messageCreate', message => {
+  if (message.channel.id == "╔🎮╗chat-relay") {
+  client.queue('text', {
+    type: 'chat', needs_translation: false, source_name: client.username, xuid: '', platform_chat_id: '',
+    message: `[DISCORD]: ${message.content}`
+  })}
+})
