@@ -5,9 +5,7 @@ const bot = new Discord.Client(
 
 bot.login(process.env.token)
 
-bot.on('ready', () => {
-  
-})
+
 
 const bedrock = require('bedrock-protocol')
 const client = bedrock.createClient({
@@ -17,6 +15,7 @@ const client = bedrock.createClient({
 })
 
 bot.on("ready", () => {
+  const guild = bot.guilds.cache.get("962336358582583306")
   guild.commands.create({
   name: "cmd",
   description: "Eseguire un cmd",
