@@ -14,42 +14,6 @@ const client = bedrock.createClient({
   }
 })
 
-bot.on("ready", () => {
-  const guild = bot.guilds.cache.get("962336358582583306")
-  guild.commands.create({
-  name: "cmd",
-  description: "Eseguire un cmd",
-  options: [
-      {
-          name: "cmdsyn",
-          description: "Il cmd",
-          type: "STRING",
-          required: true
-      }
-  ]
-})
-})
-
-bot.on("interactionCreate", interaction => {
-if (!interaction.isCommand()) return
-
-
-if (interaction.commandName == "cmd") {
-if (!interaction.member.permissions.has("MANAGE_SERVER")) {
-  return interaction.reply({ content: "Non hai il permesso", ephemeral: true })
-}
-
-var utente = interaction.options.getString("cmdsyn")
-
-client.queue('text', {
-  type: 'chat', needs_translation: false, source_name: client.username, xuid: '', platform_chat_id: '',
-  message: `/${utente}`
-})
-
-interaction.reply({ content: "Comando eseguto con successo" })
-}
-})
-
 
 client.on('text', data => {
   
