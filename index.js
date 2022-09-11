@@ -18,12 +18,11 @@ client.on('text', data => {
 })
 
 
-bot.on('messageCreate', message => { {
-  if (!message.author.id == "1018467183933800518")
-      client.queue('text', {
-        type: 'chat',
-        message: `[DISCORD]: ${message.author}: ${message.content}`
-      })
-    }
-  })
-
+bot.on('messageCreate', message => { 
+  if (!message.author.id == "1018467183933800518") {
+    client.write('text', {
+      type: 'text',
+      message: `[Da Discord: ${message.author}]: ${message.content}`
+    })
+  }
+})
