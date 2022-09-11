@@ -19,7 +19,7 @@ client.on('text', data => {
 
 
 bot.on('messageCreate', message => { 
-    client.write('text', {
+    client.queue('text', {
       type: 'text',
       message: `[Da Discord: ${message.author}]: ${message.content}`
     })
