@@ -3,7 +3,7 @@ const bot = new Discord.Client(
     { intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES"] }
 )
 
-bot.login("MTAxODQ2NzE4MzkzMzgwMDUxOA.G90ppO.CnvgExlExfJ7Vz8IMd-yBI26d2v7uCqV46_VaI")
+bot.login(process.env.token)
 
 
 const bedrock = require('bedrock-protocol')
