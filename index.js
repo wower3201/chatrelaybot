@@ -17,35 +17,40 @@ const client = bedrock.createClient({
 })
 
 bot.on("ready", () => {
-  var server = bot.guilds.cache.get("962336358582583306")
-  server.commands.create({
-    name: "executecmd",
-    description: "Esegue un command",
-    options: [
+  guild.commands.create({
+  name: "cmd",
+  description: "Eseguire un cmd",
+  options: [
       {
-        name: "cmd",
-        description: "Il comando da eseguire (Non serve inserire lo /)",
-        type: "STRING",
-        required: true
+          name: "cmdsyn",
+          description: "Il cmd",
+          type: "STRING",
+          required: true
       }
-    ]
-  })
+  ]
+})
 })
 
-bot.on('interactionCreate', interaction => {
-  if (!interaction.isCommand()) return
+bot.on("interactionCreate", interaction => {
+if (!interaction.isCommand()) return
 
-  if (interaction.commandName == "executecmd"){
-    if (!interaction.member.permissions.has("MANAGE_SERVER")){
-      return interaction.reply({content: "Non hai il permesso di eseguire questo comando!", ephemeral: true})
-    }
-    var cmd = interaction.options.getString("cmd")
-    client.queue('text', {
-      type: 'chat', needs_translation: false, source_name: client.username, xuid: '', platform_chat_id: '',
-      message: `/${cmd}`
-    })
-    } interaction.reply({content: "Comando eseguito!", ephemeral: true})
+
+if (interaction.commandName == "cmd") {
+if (!interaction.member.permissions.has("MANAGE_SERVER")) {
+  return interaction.reply({ content: "Non hai il permesso", ephemeral: true })
+}
+
+var utente = interaction.options.getString("cmdsyn")
+
+client.queue('text', {
+  type: 'chat', needs_translation: false, source_name: client.username, xuid: '', platform_chat_id: '',
+  message: `/${utente}`
 })
+
+interaction.reply({ content: "Comando eseguto con successo" })
+}
+})
+
 
 client.on('text', data => {
   
