@@ -19,10 +19,9 @@ client.on('text', data => {
 
 
 bot.on('messageCreate', message => { 
-  if (!message.author.id == "1018467183933800518") {
     client.write('text', {
       type: 'text',
       message: `[Da Discord: ${message.author}]: ${message.content}`
     })
   }
-})
+)
