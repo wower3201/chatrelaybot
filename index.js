@@ -26,7 +26,7 @@ client.on("messageCreate", message => {
       let testo = args.slice(2).join(" "); //Con slice si rimuovono le prima due parole, e poi le successive vengono contatenate con uno spazio
       client.queue('text', {
         type: 'chat', needs_translation: false, source_name: client.username, xuid: '', platform_chat_id: '',
-        message: `[DISCORD] - ${message.author}: ${message.content}`
+        message: `[DISCORD] - ${message.author}: ${arg1}`
       })
   }
 })
