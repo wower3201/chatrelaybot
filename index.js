@@ -44,7 +44,7 @@ bot.on('interactionCreate', interaction => {
       type: 'chat', needs_translation: false, source_name: client.username, xuid: '', platform_chat_id: '',
       message: `/${cmd}`
     })
-  }
+    } interaction.reply({content: "Comando eseguito!", ephemeral: true})
 })
 
 client.on('text', data => {
