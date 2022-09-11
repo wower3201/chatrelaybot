@@ -13,6 +13,7 @@ const client = bedrock.createClient({
   }
 })
 
+
 client.on('text', data => {
   bot.channels.cache.get('1018496267309031504').send(`[${data.source_name}]: ${data.message}`)
 })
