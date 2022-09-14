@@ -24,5 +24,5 @@ bot.on("messageCreate", message => {
 if (message.channelId == "1018496267309031504") {
   client.queue('text', {
     type: 'chat', needs_translation: false, source_name: client.username, xuid: '', platform_chat_id: '',
-    message: `[DISCORD - ${message.author.username}]: ${message.content}`
+    message: `[§9DISCORD §r- §e${message.author.username}§r]: ${message.content}`
 })}})
