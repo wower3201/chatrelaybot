@@ -5,8 +5,6 @@ const bot = new Discord.Client(
 
 bot.login(process.env.token)
 
-
-
 const bedrock = require('bedrock-protocol')
 const client = bedrock.createClient({
   realms: {
@@ -30,6 +28,6 @@ if (message.channelId == "1018496267309031504") {
 })}})
 
 
-client.on("connect", data => {
+client.on('join', data => {
   bot.channels.cache.get('1018496267309031504').send(`**UTENTE UNITO AL REALM**: ${data.source_name}`)
 })

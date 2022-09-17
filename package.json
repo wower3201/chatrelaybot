@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "bedrock-protocol": "^3.18.0",
-    "discord.js": "^13.10.3"
+    "discord.js": "^13.10.3",
+    "prismarine-auth": "^1.7.0",
+    "prismarine-realms": "^1.2.0"
   }
 }
