@@ -46,3 +46,13 @@ client.on('text', data => {
     sendMessage(`Ciao ${data.source_name}!`)
   }
 })
+const { Authflow } = require("prismarine-auth")
+const { RealmAPI } = require('prismarine-realms')
+const authflow = new Authflow()
+const api = RealmAPI.from(authflow, 'bedrock') // or 'java'
+
+const players = api.getRealmFromInvite("drqP2b_b2b8").then(data => {
+  bot.on("ready", () => {
+    bot.user.setActivity(`Players: ${data.players.length}/${data.maxPlayers}`)
+  })
+})
