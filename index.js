@@ -9,7 +9,7 @@ const bot = new Discord.Client(
  * @example sendMessage("HI!")
  */
 
-export function sendMessage(text) {
+function sendMessage(text) {
   client.queue('text', {
     type: 'chat', needs_translation: false, source_name: client.username, xuid: '', platform_chat_id: '',
     message: text
