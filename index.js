@@ -53,6 +53,6 @@ const api = RealmAPI.from(authflow, 'bedrock') // or 'java'
 
 const players = api.getRealmFromInvite("drqP2b_b2b8").then(data => {
   bot.on("ready", () => {
-    bot.user.setActivity(`Players: ${data.players.length}/${data.maxPlayers}`)
+    bot.user.setActivity(`Players: ${data.players.length}/${data.maxPlayers}`, { type: "WATCHING"})
   })
 })
