@@ -42,7 +42,7 @@ if (message.channelId == "1018496267309031504") {
 
 
 client.on('text', data => {
-  if (data.message.toLowerCase().includes("ciao")) {
+  if (data.message.toLowerCase().includes("ciao") && !data.source_name.toLowerCase().includes("stormcraft")) {
     sendMessage(`Ciao ${data.source_name}!`)
   }
 })
