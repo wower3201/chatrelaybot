@@ -51,23 +51,16 @@ const { RealmAPI } = require('prismarine-realms')
 const authflow = new Authflow()
 const api = RealmAPI.from(authflow, 'bedrock') // or 'java'
 
-bot.on("ready", () => {
-  console.log("BOT ON")
 
-  var server = bot.guilds.cache.get("962336358582583306")
+bot.on("messageCreate", message => {
+  if (message.content.startsWith("!realms_info")) { //Importante che ci sia startsWith in modo che il comando non deve essere solo "!comando" ma può continuare
+      const args = message.content.split(/ +/); //Tutti gli argomenti
 
-  server.commands.create({
-    name: "inforealm",
-    description: "Ottiene le info attuali del realm"
-  })
-})
+      let arg1 = args[1]; //Argomento 1
 
-bot.on('interactionCreate', interaction => {
-  if(!interaction.isCommand()) return
-
-  if (interaction.commandName == "inforealm") {
-    api.getRealmFromInvite("drqP2b_b2b8").then(data => {
-      interaction.reply(`Attuali info: Nome: ${data.name} Players: ${data.players}/${data.maxPlayers}`)
-    })
+      let testo = args.slice(2).join(" "); 
+      api.getRealmFromInvite(arg1).then(data => {
+        message.reply(`INFO REALM: Nome: ${data.name}, Permesso di default: ${data.defaultPermission}, Players massimi: ${data.maxPlayers}, Owner: ${data.owner}, Stato: ${data.state}`)
+      })
   }
 })
