@@ -51,8 +51,23 @@ const { RealmAPI } = require('prismarine-realms')
 const authflow = new Authflow()
 const api = RealmAPI.from(authflow, 'bedrock') // or 'java'
 
-const players = api.getRealmFromInvite("drqP2b_b2b8").then(data => {
-  bot.on("ready", () => {
-    bot.user.setActivity(`Players: ${data.players.length}/${data.maxPlayers}`, { type: "WATCHING"})
+bot.on("ready", () => {
+  console.log("BOT ON")
+
+  var server = bot.guilds.cache.get("962336358582583306")
+
+  server.commands.create({
+    name: "inforealm",
+    description: "Ottiene le info attuali del realm"
   })
+})
+
+bot.on('interactionCreate', interaction => {
+  if(!interaction.isCommand()) return
+
+  if (interaction.commandName == "inforealm") {
+    api.getRealmFromInvite("drqP2b_b2b8").then(data => {
+      interaction.reply(`Attuali info: Nome: ${data.name} Players: ${data.players.length}/${data.maxPlayers}`)
+    })
+  }
 })
