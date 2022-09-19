@@ -44,23 +44,11 @@ if (message.channelId == "1018496267309031504") {
 client.on('text', data => {
   if (data.message.toLowerCase().includes("ciao") && !data.source_name.toLowerCase().includes("stormcraft")) {
     sendMessage(`Ciao ${data.source_name}!`)
-  }
-})
+  }})
+
 const { Authflow } = require("prismarine-auth")
 const { RealmAPI } = require('prismarine-realms')
 const authflow = new Authflow()
 const api = RealmAPI.from(authflow, 'bedrock') // or 'java'
 
 
-bot.on("messageCreate", message => {
-  if (message.content.startsWith("!realms_info")) { //Importante che ci sia startsWith in modo che il comando non deve essere solo "!comando" ma può continuare
-      const args = message.content.split(/ +/); //Tutti gli argomenti
-
-      let arg1 = args[1]; //Argomento 1
-
-      let testo = args.slice(2).join(" "); 
-      api.getRealmFromInvite(arg1).then(data => {
-        message.reply(`INFO REALM: Nome: ${data.name}, Permesso di default: ${data.defaultPermission}, Players massimi: ${data.maxPlayers}, Owner: ${data.owner}, Stato: ${data.state}`)
-      })
-  }
-})
