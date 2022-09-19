@@ -67,7 +67,7 @@ bot.on('interactionCreate', interaction => {
 
   if (interaction.commandName == "inforealm") {
     api.getRealmFromInvite("drqP2b_b2b8").then(data => {
-      interaction.reply(`Attuali info: Nome: ${data.name} Players: ${data.players.length}/${data.maxPlayers}`)
+      interaction.reply(`Attuali info: Nome: ${data.name} Players: ${data.players}/${data.maxPlayers}`)
     })
   }
 })
